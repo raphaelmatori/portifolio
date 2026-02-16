@@ -15,6 +15,7 @@ export const ContactPage: React.FC = () => {
     subject: false,
     message: false
   });
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -55,12 +56,36 @@ export const ContactPage: React.FC = () => {
     setTouched(prev => ({ ...prev, [name]: true }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isFormValid()) {
-      // Handle form submission
-      const mailtoLink = `mailto:raphaelmatori@hotmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`)}`;
-      window.location.href = mailtoLink;
+    if (!isFormValid()) return;
+
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://formspree.io/f/maqdjejw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        setTouched({ name: false, email: false, subject: false, message: false });
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
     }
   };
 
@@ -181,16 +206,28 @@ export const ContactPage: React.FC = () => {
                   onBlur={handleBlur}
                 />
               </div>
+              {status === 'success' && (
+                <div className="contact__status contact__status--success">
+                  {t('contact.successMessage') || 'Message sent successfully!'}
+                </div>
+              )}
+              {status === 'error' && (
+                <div className="contact__status contact__status--error">
+                  {t('contact.errorMessage') || 'Failed to send message. Please try again.'}
+                </div>
+              )}
               <button
                 type="submit"
-                className={`contact__submit ${!formValid ? 'contact__submit--disabled' : ''}`}
-                disabled={!formValid}
+                className={`contact__submit ${!formValid || status === 'loading' ? 'contact__submit--disabled' : ''}`}
+                disabled={!formValid || status === 'loading'}
               >
-                {t('contact.sendMessage')}
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14"/>
-                  <path d="m12 5 7 7-7 7"/>
-                </svg>
+                {status === 'loading' ? t('contact.sending') || 'Sending...' : t('contact.sendMessage')}
+                {status !== 'loading' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14"/>
+                    <path d="m12 5 7 7-7 7"/>
+                  </svg>
+                )}
               </button>
             </form>
           </div>

@@ -9,11 +9,11 @@ export const Footer: React.FC = () => {
       <span className="footer__copyright">
         © {new Date().getFullYear()} Raphael Matori. {t('footer.rights')}
       </span>
-      <div className="footer__right">
+      {/* <div className="footer__right">
         <a href="/resume.pdf" className="button button--download-cv">
           {t('footer.downloadCv')}
         </a>
-      </div>
+      </div> */}
     </footer>
   );
 };
