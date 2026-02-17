@@ -27,13 +27,16 @@ export const HeroSection: React.FC = () => {
       </div>
 
     <div className="hero__center">
-      <img
-        src="/center_image.png"
-        alt="Code"
-        className="hero__center-image"
-        width="280"
-        height="280"
-      />
+      <picture>
+        <source srcSet="/center_image.webp" type="image/webp" />
+        <img
+          src="/center_image.png"
+          alt="Code"
+          className="hero__center-image"
+          width="280"
+          height="280"
+        />
+      </picture>
     </div>
 
       <div className="hero__right">
