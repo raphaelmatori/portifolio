@@ -1246,7 +1246,8 @@ body {
 }
 
 .project-card__badge {
-  height: 24px;
+  max-width: 100%;
+  height: auto;
   border-radius: 4px;
 }
 
