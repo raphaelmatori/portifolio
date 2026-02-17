@@ -41,8 +41,9 @@ export const HeroSection: React.FC = () => {
       <div className="hero__right">
         <div className="hero__avatar">
           <img
-            src="/linkedin-400.jpg"
-            srcSet="/linkedin-200.jpg 200w, /linkedin-400.jpg 400w, /linkedin.jpeg 800w"
+            src="/linkedin-200.jpg"
+            srcSet="/linkedin-200.jpg 200w, /linkedin-400.jpg 400w"
+            sizes="(max-width: 720px) 100px, 200px"
             alt="Raphael Matori"
             className="hero__avatar-image"
             width="200"
