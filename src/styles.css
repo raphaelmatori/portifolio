@@ -912,7 +912,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -4px;
+  bottom: 4px;
   margin-inline: auto;
   width: 60%;
   height: 2px;
@@ -1143,7 +1143,7 @@ body {
 .projects::before {
   content: '';
   position: absolute;
-  top: calc(-1 * var(--spacing-xl));
+  top: calc(-1 * var(--spacing-xl)+2px);
   left: 10%;
   right: 10%;
   height: 1px;
@@ -1169,7 +1169,7 @@ body {
 }
 
 .projects__title {
-  margin: 0;
+  margin-top: 10px;
   font-size: 1.125rem;
   animation: fade-in-up var(--anim-duration) var(--anim-ease) 0.35s both;
 }
@@ -1433,6 +1433,12 @@ body {
   }
 }
 
+@media (min-width: 1147px) {
+  .hero__center {
+    display: flex;
+  }
+}
+
 @media (max-width: 910px) {
   .navigation__hamburger {
     display: flex;
@@ -1544,11 +1550,12 @@ body {
     align-items: flex-start;
     gap: var(--spacing-xs);
     flex: 1;
+    padding-right: 10px;
   }
 
   .hero__avatar {
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
     flex-shrink: 0;
   }
 
@@ -1596,12 +1603,13 @@ body {
   }
 
   .hero__avatar {
-    width: 40px;
-    height: 40px;
+    align-self: center;
+    width: 80px;
+    height: 80px;
   }
 
   .hero__title {
-    font-size: 0.85rem;
+    font-size: 1.3rem;
   }
 
   .hero__eyebrow {
