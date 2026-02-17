@@ -27,22 +27,22 @@ export const HeroSection: React.FC = () => {
       </div>
 
     <div className="hero__center">
-      <picture>
-        <source srcSet="/center_image.webp" type="image/webp" />
-        <img
-          src="/center_image.png"
-          alt="Code"
-          className="hero__center-image"
-          width="280"
-          height="280"
-        />
-      </picture>
+      <img
+        src="/center_image-sm.webp"
+        srcSet="/center_image-sm.webp 280w, /center_image-lg.webp 560w, /center_image.webp 800w"
+        alt="Code"
+        className="hero__center-image"
+        width="280"
+        height="280"
+        fetchPriority="high"
+      />
     </div>
 
       <div className="hero__right">
         <div className="hero__avatar">
           <img
-            src="/linkedin.jpeg"
+            src="/linkedin-400.jpg"
+            srcSet="/linkedin-200.jpg 200w, /linkedin-400.jpg 400w, /linkedin.jpeg 800w"
             alt="Raphael Matori"
             className="hero__avatar-image"
             width="200"

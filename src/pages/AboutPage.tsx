@@ -8,16 +8,14 @@ export const AboutPage: React.FC = () => {
     <main className="page__content">
       <section className="about">
         <div className="about__image-wrapper">
-          <picture>
-            <source srcSet="/Raphael_Draw.webp" type="image/webp" />
-            <img
-              src="/Raphael_Draw.png"
-              alt="Raphael Matori"
-              className="about__image"
-              width="300"
-              height="300"
-            />
-          </picture>
+          <img
+            src="/Raphael_Draw-sm.webp"
+            srcSet="/Raphael_Draw-sm.webp 300w, /Raphael_Draw-lg.webp 600w, /Raphael_Draw.webp 1024w"
+            alt="Raphael Matori"
+            className="about__image"
+            width="300"
+            height="300"
+          />
         </div>
         <div className="about__content">
           <h1 className="about__title">{t('about.title')}</h1>
