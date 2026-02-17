@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import { HomePage } from '../pages/HomePage';
-import { AboutPage } from '../pages/AboutPage';
-import { ProjectsPage } from '../pages/ProjectsPage';
-import { ResumePage } from '../pages/ResumePage';
-import { ContactPage } from '../pages/ContactPage';
+
+const HomePage = lazy(() => import('../pages/HomePage').then(m => ({ default: m.HomePage })));
+const AboutPage = lazy(() => import('../pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const ProjectsPage = lazy(() => import('../pages/ProjectsPage').then(m => ({ default: m.ProjectsPage })));
+const ResumePage = lazy(() => import('../pages/ResumePage').then(m => ({ default: m.ResumePage })));
+const ContactPage = lazy(() => import('../pages/ContactPage').then(m => ({ default: m.ContactPage })));
 
 const ROUTE_ORDER = ['/', '/about', '/projects', '/resume', '/contact'];
 
@@ -30,7 +31,9 @@ export const AnimatedRoutes: React.FC = () => {
             className="carousel__slide"
             style={{ display: index === safeIndex ? 'flex' : 'none' }}
           >
-            {slide.component}
+            <Suspense fallback={<div className="page__content" />}>
+              {slide.component}
+            </Suspense>
           </div>
         ))}
     </div>

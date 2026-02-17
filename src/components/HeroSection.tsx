@@ -31,6 +31,8 @@ export const HeroSection: React.FC = () => {
         src="/center_image.png"
         alt="Code"
         className="hero__center-image"
+        width="280"
+        height="280"
       />
     </div>
 
@@ -40,6 +42,8 @@ export const HeroSection: React.FC = () => {
             src="/linkedin.jpeg"
             alt="Raphael Matori"
             className="hero__avatar-image"
+            width="200"
+            height="200"
           />
         </div>
         <ul className="hero__social-list" aria-label="Social links">

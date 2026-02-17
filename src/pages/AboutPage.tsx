@@ -12,6 +12,8 @@ export const AboutPage: React.FC = () => {
             src="/Raphael_Draw.png"
             alt="Raphael Matori"
             className="about__image"
+            width="300"
+            height="300"
           />
         </div>
         <div className="about__content">
