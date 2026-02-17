@@ -10,7 +10,11 @@ function getCurrentLanguageOption(code: string | undefined): LanguageOption {
   return supportedLanguages.find((language) => language.code === code) ?? fallback;
 }
 
-export const LanguageDropdown: React.FC = () => {
+type LanguageDropdownProps = {
+  onLanguageChange?: () => void;
+};
+
+export const LanguageDropdown: React.FC<LanguageDropdownProps> = ({ onLanguageChange }) => {
   const { t, i18n } = useTranslation();
   const menuId = useId();
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -48,6 +52,7 @@ export const LanguageDropdown: React.FC = () => {
   const changeLanguage = async (language: LanguageOption) => {
     setIsOpen(false);
     await i18n.changeLanguage(language.code);
+    onLanguageChange?.();
   };
 
   return (

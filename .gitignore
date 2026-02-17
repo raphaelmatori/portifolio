@@ -31,3 +31,6 @@ pnpm-debug.log*
 
 # Local env files
 *.local
+
+# Other
+.claude/
