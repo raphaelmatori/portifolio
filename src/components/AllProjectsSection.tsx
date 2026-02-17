@@ -63,8 +63,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
             src={technologyBadges[technology]}
             alt={technology}
             className="project-card__badge"
-            width="24"
-            height="24"
           />
         </li>
       ))}
