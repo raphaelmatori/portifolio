@@ -41,7 +41,7 @@ export const ResumePage: React.FC = () => {
         <dl className="resume__skills-list">
           <div>
             <dt>{t('resume.frontend')}</dt>
-            <dd>Angular (5 to 21), RxJS, TypeScript, HTML5, CSS3, Ionic, Cypress (E2E Testing)</dd>
+            <dd>Angular (5 to 21), RxJS, TypeScript, HTML5, CSS3, SCSS, Ionic, Cypress (E2E Testing)</dd>
           </div>
           <div>
             <dt>{t('resume.backend')}</dt>
@@ -71,6 +71,12 @@ export const ResumePage: React.FC = () => {
             <span className="resume__job-period">{t('resume.hexawarePeriod')}</span>
           </div>
           <p className="resume__job-role">{t('resume.hexawareRole')}</p>
+          <p className="resume__job-project">{t('resume.aemProject')}</p>
+          <ul className="resume__job-bullets">
+            {t('resume.aemBullets', { returnObjects: true } as any).map((bullet: string, index: number) => (
+              <li key={index}>{bullet}</li>
+            ))}
+          </ul>
           <p className="resume__job-project">{t('resume.dealershipProject')}</p>
           <ul className="resume__job-bullets">
             {t('resume.dealershipBullets', { returnObjects: true } as any).map((bullet: string, index: number) => (
