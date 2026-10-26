@@ -157,6 +157,7 @@ export const ResumePage: React.FC = () => {
         <h2 className="resume__section-title">{t('resume.certifications')}</h2>
         <ul className="resume__cert-list">
           <li>{t('resume.certAws')}</li>
+          <li>{t('resume.certScrum')}</li>
           <li>{t('resume.certAngular')}</li>
           <li>{t('resume.certReact')}</li>
           <li>{t('resume.certReactNative')}</li>

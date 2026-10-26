@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { LanguageDropdown } from './LanguageDropdown';
+import { ThemeToggle } from './ThemeToggle';
 
 const navigationItems = [
   { labelKey: 'nav.home', path: '/' },
@@ -71,7 +72,10 @@ export const NavigationBar: React.FC = () => {
               </li>
             ))}
           </ul>
-          <LanguageDropdown onLanguageChange={closeMenu} />
+          <div className="navigation__controls">
+            <ThemeToggle />
+            <LanguageDropdown onLanguageChange={closeMenu} />
+          </div>
         </nav>
       </div>
     </header>
