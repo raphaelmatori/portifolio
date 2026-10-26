@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useRevealOnScroll } from '../hooks/useRevealOnScroll';
 
 type TechnologyTag = 'Fullstack' | 'Node.js' | 'Python' | 'React' | 'MongoDB' | 'TypeScript' | 'Kotlin' | 'Docker' | 'AI/LLM';
 
@@ -53,6 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, technolog
 
 export const FeaturedProjectsSection: React.FC = () => {
   const { t } = useTranslation();
+  const gridRef = useRevealOnScroll<HTMLDivElement>();
 
   return (
     <section id="projects" className="projects" aria-labelledby="projects-title">
@@ -62,7 +64,7 @@ export const FeaturedProjectsSection: React.FC = () => {
         </h2>
         <p className="projects__subtitle">{t('projects.subtitle')}</p>
       </div>
-      <div className="projects__grid">
+      <div className="projects__grid" ref={gridRef}>
         {projectCards.map((project) => (
           <ProjectCard
             key={project.key}
